@@ -7,6 +7,9 @@
     <Compile Update="AddCampusLocation.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="AddDistanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Classes\SelectableCampusLocation.cs">
       <SubType>Component</SubType>
     </Compile>

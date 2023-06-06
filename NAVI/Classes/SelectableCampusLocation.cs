@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,9 +10,17 @@ namespace NAVI.Classes
     public class SelectableCampusLocation: PictureBox
     {
         public CampusLocation CampusLocation;
-        public SelectableCampusLocation(CampusLocation campusLocation) 
+        public BuildingFloor BuildingFloor;
+
+        public SelectableCampusLocation(CampusLocation campusLocation, BuildingFloor buildingFloor) 
         {
+            this.BuildingFloor = buildingFloor;
             this.CampusLocation = campusLocation;
+
+            if (CampusLocation.LocationType == LocationType.MAIN)
+                this.BackColor = Color.Red;
+            else
+                this.BackColor = Color.Green;
             this.Click += SelectableCampusLocation_Click;
         }
 
@@ -19,21 +28,29 @@ namespace NAVI.Classes
         {
             if (CampusLocation == null) return;
 
-            this.CreateGraphics().Clear(Color.Yellow);
-        }
 
-        public void Draw()
-        {
-            if (CampusLocation == null)
+            if (this.BackColor != Color.Yellow && CLConnector.AddCampusLocation(this.CampusLocation))
+                this.BackColor = Color.Yellow;
+            else
             {
-                this.Visible = false;
-                return;
-            }
-            else this.Visible = true;
+                CLConnector.Remove(this.CampusLocation);
+                if (CampusLocation.LocationType == LocationType.MAIN)
+                    this.BackColor = Color.Red;
+                else
+                    this.BackColor = Color.Green;
 
-            if(CampusLocation.LocationType == LocationType.MAIN) 
-                this.CreateGraphics().Clear(Color.Red);
-            else this.CreateGraphics().Clear(Color.Green);
+            }
         }
+
+        public void Reset()
+        {
+            CLConnector.Remove(this.CampusLocation);
+            if (CampusLocation.LocationType == LocationType.MAIN)
+                this.BackColor = Color.Red;
+            else
+                this.BackColor = Color.Green;
+        }
+
+      
     }
 }

@@ -35,6 +35,8 @@
             this.naviDataToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.campusLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MSItemCampusLocationAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.MSItemCampusLocationConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.MSItemCampusLocationClear = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ListBoxBuildingFloors = new System.Windows.Forms.ListBox();
@@ -42,8 +44,8 @@
             this.PanelMap = new System.Windows.Forms.Panel();
             this.PictureBoxBldgImage = new System.Windows.Forms.PictureBox();
             this.PanelListBox = new System.Windows.Forms.Panel();
-            this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.ListBoxCampusLocations = new System.Windows.Forms.ListBox();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -97,7 +99,9 @@
             // campusLocationToolStripMenuItem
             // 
             this.campusLocationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MSItemCampusLocationAdd});
+            this.MSItemCampusLocationAdd,
+            this.MSItemCampusLocationConnect,
+            this.MSItemCampusLocationClear});
             this.campusLocationToolStripMenuItem.Name = "campusLocationToolStripMenuItem";
             this.campusLocationToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
             this.campusLocationToolStripMenuItem.Text = "Campus Location";
@@ -105,9 +109,23 @@
             // MSItemCampusLocationAdd
             // 
             this.MSItemCampusLocationAdd.Name = "MSItemCampusLocationAdd";
-            this.MSItemCampusLocationAdd.Size = new System.Drawing.Size(96, 22);
+            this.MSItemCampusLocationAdd.Size = new System.Drawing.Size(180, 22);
             this.MSItemCampusLocationAdd.Text = "Add";
             this.MSItemCampusLocationAdd.Click += new System.EventHandler(this.MSItemCampusLocationAdd_Click);
+            // 
+            // MSItemCampusLocationConnect
+            // 
+            this.MSItemCampusLocationConnect.Name = "MSItemCampusLocationConnect";
+            this.MSItemCampusLocationConnect.Size = new System.Drawing.Size(180, 22);
+            this.MSItemCampusLocationConnect.Text = "Connect";
+            this.MSItemCampusLocationConnect.Click += new System.EventHandler(this.MSItemCampusLocationConnect_Click);
+            // 
+            // MSItemCampusLocationClear
+            // 
+            this.MSItemCampusLocationClear.Name = "MSItemCampusLocationClear";
+            this.MSItemCampusLocationClear.Size = new System.Drawing.Size(180, 22);
+            this.MSItemCampusLocationClear.Text = "Clear Selection";
+            this.MSItemCampusLocationClear.Click += new System.EventHandler(this.MSItemCampusLocationClear_Click);
             // 
             // TabControl
             // 
@@ -156,6 +174,7 @@
             // 
             // PanelMap
             // 
+            this.PanelMap.AutoScroll = true;
             this.PanelMap.Controls.Add(this.PictureBoxBldgImage);
             this.PanelMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelMap.Location = new System.Drawing.Point(3, 3);
@@ -171,6 +190,7 @@
             this.PictureBoxBldgImage.Size = new System.Drawing.Size(618, 392);
             this.PictureBoxBldgImage.TabIndex = 0;
             this.PictureBoxBldgImage.TabStop = false;
+            this.PictureBoxBldgImage.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureBoxBldgImage_Paint);
             this.PictureBoxBldgImage.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PictureBoxBldgImage_MouseClick);
             // 
             // PanelListBox
@@ -182,10 +202,6 @@
             this.PanelListBox.Size = new System.Drawing.Size(168, 392);
             this.PanelListBox.TabIndex = 0;
             // 
-            // ofd
-            // 
-            this.ofd.FileName = "openFileDialog1";
-            // 
             // ListBoxCampusLocations
             // 
             this.ListBoxCampusLocations.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -195,6 +211,10 @@
             this.ListBoxCampusLocations.Name = "ListBoxCampusLocations";
             this.ListBoxCampusLocations.Size = new System.Drawing.Size(168, 392);
             this.ListBoxCampusLocations.TabIndex = 0;
+            // 
+            // ofd
+            // 
+            this.ofd.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -206,6 +226,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.TabControl.ResumeLayout(false);
@@ -237,5 +258,7 @@
         private ToolStripMenuItem campusLocationToolStripMenuItem;
         private ToolStripMenuItem MSItemCampusLocationAdd;
         private ListBox ListBoxCampusLocations;
+        private ToolStripMenuItem MSItemCampusLocationConnect;
+        private ToolStripMenuItem MSItemCampusLocationClear;
     }
 }

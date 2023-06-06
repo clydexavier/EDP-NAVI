@@ -21,5 +21,10 @@ namespace NAVI.Classes
             this.LocationType = locationType;
         }
 
+        public override string ToString()
+        {
+            return this.DisplayName;
+        }
+
     }
 }

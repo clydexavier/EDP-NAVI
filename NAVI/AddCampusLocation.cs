@@ -16,6 +16,8 @@ namespace NAVI
     {
         public CampusLocation CampusLocation;
         public PointF PointLocation;
+
+
         public AddCampusLocation()
         {
             InitializeComponent();

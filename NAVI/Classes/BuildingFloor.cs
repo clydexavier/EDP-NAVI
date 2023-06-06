@@ -12,7 +12,7 @@ namespace NAVI.Classes
         public Image BuildingImage { get; set; }
         public string Name { get; set; }
         public List<CampusLocation> CampusLocations;
-        public Dictionary<CampusLocation, List<CampusLocation>> AdjacencyList;
+        public Dictionary<CampusLocation, List<Tuple<CampusLocation, double>>> AdjacencyList;
 
         public string Description { get; set; }
         public string Credits { get; set; }
@@ -26,7 +26,7 @@ namespace NAVI.Classes
             this.Name = name;
             this.Credits= credits;
             this.CampusLocations = new List<CampusLocation>();
-            this.AdjacencyList = new Dictionary<CampusLocation, List<CampusLocation>>();
+            this.AdjacencyList = new Dictionary<CampusLocation, List<Tuple<CampusLocation, double>>>();
 
             this.Description = description;
             this.Tags = new List<string>();
