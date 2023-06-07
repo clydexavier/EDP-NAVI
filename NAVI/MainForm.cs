@@ -143,12 +143,12 @@ namespace NAVI
                 if(adf.ShowDialog() == DialogResult.OK) 
                 {
                     if (!CLConnector.BldgFlr.AdjacencyList.ContainsKey(adf.AdjacencyData.Item1.Name))
-                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item1.Name, new List<Tuple<string, double>>());
+                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item1.Name, new List<Tuple<CampusLocation, double>>());
                     if (!CLConnector.BldgFlr.AdjacencyList.ContainsKey(adf.AdjacencyData.Item2.Name))
-                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item2.Name, new List<Tuple<string, double>>());
+                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item2.Name, new List<Tuple<CampusLocation, double>>());
 
-                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item1.Name].Add(new Tuple<string, double>(adf.AdjacencyData.Item2.Name, adf.Distance));
-                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item2.Name].Add(new Tuple<string, double>(adf.AdjacencyData.Item1.Name, adf.Distance));
+                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item1.Name].Add(new Tuple<CampusLocation, double>(adf.AdjacencyData.Item2, adf.Distance));
+                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item2.Name].Add(new Tuple<CampusLocation, double>(adf.AdjacencyData.Item1, adf.Distance));
 
                     Paths.Add(new Tuple<PointF, PointF>(adf.AdjacencyData.Item1.Location, adf.AdjacencyData.Item2.Location));
 
