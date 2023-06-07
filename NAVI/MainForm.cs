@@ -46,6 +46,8 @@ namespace NAVI
 
             if (ListBoxBuildingFloors.SelectedItem != null)
             {
+                RefreshPictureBox();
+                UpdateBuildingFloor();
                 TabControl.TabPages[1].Text = (((BuildingFloor)ListBoxBuildingFloors.SelectedItem).Name);
 
                 this.FocusBuildingFloor = ((BuildingFloor)ListBoxBuildingFloors.SelectedItem);
@@ -60,6 +62,7 @@ namespace NAVI
 
 
                 CLConnector.BldgFlr = this.FocusBuildingFloor;
+                
             }
         }
 
@@ -139,13 +142,13 @@ namespace NAVI
                 adf.AdjacencyData = x;
                 if(adf.ShowDialog() == DialogResult.OK) 
                 {
-                    if (!CLConnector.BldgFlr.AdjacencyList.ContainsKey(adf.AdjacencyData.Item1))
-                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item1, new List<Tuple<CampusLocation, double>>());
-                    if (!CLConnector.BldgFlr.AdjacencyList.ContainsKey(adf.AdjacencyData.Item2))
-                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item2, new List<Tuple<CampusLocation, double>>());
+                    if (!CLConnector.BldgFlr.AdjacencyList.ContainsKey(adf.AdjacencyData.Item1.Name))
+                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item1.Name, new List<Tuple<string, double>>());
+                    if (!CLConnector.BldgFlr.AdjacencyList.ContainsKey(adf.AdjacencyData.Item2.Name))
+                        CLConnector.BldgFlr.AdjacencyList.Add(adf.AdjacencyData.Item2.Name, new List<Tuple<string, double>>());
 
-                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item1].Add(new Tuple<CampusLocation, double>(adf.AdjacencyData.Item2, adf.Distance));
-                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item2].Add(new Tuple<CampusLocation, double>(adf.AdjacencyData.Item1, adf.Distance));
+                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item1.Name].Add(new Tuple<string, double>(adf.AdjacencyData.Item2.Name, adf.Distance));
+                    CLConnector.BldgFlr.AdjacencyList[adf.AdjacencyData.Item2.Name].Add(new Tuple<string, double>(adf.AdjacencyData.Item1.Name, adf.Distance));
 
                     Paths.Add(new Tuple<PointF, PointF>(adf.AdjacencyData.Item1.Location, adf.AdjacencyData.Item2.Location));
 
@@ -211,6 +214,25 @@ namespace NAVI
                 foreach (BuildingFloor bf in BuildingFloors) ListBoxBuildingFloors.Items.Add(bf);
 
 
+                RefreshPictureBox();
+            }
+        }
+
+        private void RefreshPictureBox()
+        {
+            if (FocusBuildingFloor == null) return;
+            LabelCampusLocations.Clear();
+            PictureBoxesCampusLocations.Clear();
+            foreach(var x in FocusBuildingFloor.CampusLocations) 
+            {
+                Label l = new Label();
+                l.Text = x.DisplayName;
+                l.Location = new Point((int)x.Location.X + 2, (int)x.Location.Y);
+
+                SelectableCampusLocation s = new SelectableCampusLocation(x, FocusBuildingFloor);
+
+                this.PictureBoxesCampusLocations.Add(s);
+                this.LabelCampusLocations.Add(l);
             }
         }
     }
