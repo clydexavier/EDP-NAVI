@@ -18,3 +18,8 @@ D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Techn
 D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\obj\Debug\net6.0-windows\NAVI.AddBuildingFloor.resources
 D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\obj\Debug\net6.0-windows\NAVI.AddCampusLocation.resources
 D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\obj\Debug\net6.0-windows\NAVI.AddDistanceForm.resources
+D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\obj\Debug\net6.0-windows\NAVI.csproj.CopyComplete
+D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\bin\Debug\net6.0-windows\Microsoft.Win32.SystemEvents.dll
+D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\bin\Debug\net6.0-windows\System.Drawing.Common.dll
+D:\ACADS\BSCS-2\Second Sem\CSci 23 - Applications Development and Emerging Technologies\NAVI\NAVI\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll

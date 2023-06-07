@@ -31,6 +31,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.buildingFloorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sabeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.naviDataToolToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.campusLocationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +47,8 @@
             this.PanelListBox = new System.Windows.Forms.Panel();
             this.ListBoxCampusLocations = new System.Windows.Forms.ListBox();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.sfd = new System.Windows.Forms.SaveFileDialog();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -70,7 +73,9 @@
             // buildingFloorToolStripMenuItem
             // 
             this.buildingFloorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripMenuItem});
+            this.newToolStripMenuItem,
+            this.sabeToolStripMenuItem,
+            this.openToolStripMenuItem});
             this.buildingFloorToolStripMenuItem.Name = "buildingFloorToolStripMenuItem";
             this.buildingFloorToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
             this.buildingFloorToolStripMenuItem.Text = "Building Floor";
@@ -78,9 +83,16 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // sabeToolStripMenuItem
+            // 
+            this.sabeToolStripMenuItem.Name = "sabeToolStripMenuItem";
+            this.sabeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sabeToolStripMenuItem.Text = "Save";
+            this.sabeToolStripMenuItem.Click += new System.EventHandler(this.sabeToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -109,21 +121,21 @@
             // MSItemCampusLocationAdd
             // 
             this.MSItemCampusLocationAdd.Name = "MSItemCampusLocationAdd";
-            this.MSItemCampusLocationAdd.Size = new System.Drawing.Size(180, 22);
+            this.MSItemCampusLocationAdd.Size = new System.Drawing.Size(152, 22);
             this.MSItemCampusLocationAdd.Text = "Add";
             this.MSItemCampusLocationAdd.Click += new System.EventHandler(this.MSItemCampusLocationAdd_Click);
             // 
             // MSItemCampusLocationConnect
             // 
             this.MSItemCampusLocationConnect.Name = "MSItemCampusLocationConnect";
-            this.MSItemCampusLocationConnect.Size = new System.Drawing.Size(180, 22);
+            this.MSItemCampusLocationConnect.Size = new System.Drawing.Size(152, 22);
             this.MSItemCampusLocationConnect.Text = "Connect";
             this.MSItemCampusLocationConnect.Click += new System.EventHandler(this.MSItemCampusLocationConnect_Click);
             // 
             // MSItemCampusLocationClear
             // 
             this.MSItemCampusLocationClear.Name = "MSItemCampusLocationClear";
-            this.MSItemCampusLocationClear.Size = new System.Drawing.Size(180, 22);
+            this.MSItemCampusLocationClear.Size = new System.Drawing.Size(152, 22);
             this.MSItemCampusLocationClear.Text = "Clear Selection";
             this.MSItemCampusLocationClear.Click += new System.EventHandler(this.MSItemCampusLocationClear_Click);
             // 
@@ -216,6 +228,13 @@
             // 
             this.ofd.FileName = "openFileDialog1";
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -260,5 +279,8 @@
         private ListBox ListBoxCampusLocations;
         private ToolStripMenuItem MSItemCampusLocationConnect;
         private ToolStripMenuItem MSItemCampusLocationClear;
+        private ToolStripMenuItem sabeToolStripMenuItem;
+        private SaveFileDialog sfd;
+        private ToolStripMenuItem openToolStripMenuItem;
     }
 }

@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace NAVI.Classes
 {
     public class BuildingFloor
     {
+        [JsonIgnore]
         public Image BuildingImage { get; set; }
+        public byte[]? ImageData;
         public string Name { get; set; }
         public List<CampusLocation> CampusLocations;
+
         public Dictionary<CampusLocation, List<Tuple<CampusLocation, double>>> AdjacencyList;
 
         public string Description { get; set; }
@@ -31,6 +36,8 @@ namespace NAVI.Classes
             this.Description = description;
             this.Tags = new List<string>();
             this.BuildingConnections = new List<BuildingConnection>();
+
+           
         }
 
         public override bool Equals(object? obj)

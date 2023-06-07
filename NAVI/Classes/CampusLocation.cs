@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace NAVI.Classes
 {
@@ -20,7 +21,6 @@ namespace NAVI.Classes
             this.Location = location;
             this.LocationType = locationType;
         }
-
         public override string ToString()
         {
             return this.DisplayName;

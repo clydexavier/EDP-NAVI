@@ -1,5 +1,7 @@
 using NAVI.Classes;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
+using System.Configuration;
 
 namespace NAVI
 {
@@ -166,6 +168,50 @@ namespace NAVI
         private void PictureBoxBldgImage_Paint(object sender, PaintEventArgs e)
         {
             this.UpdateBuildingFloor();
+        }
+
+        private void sabeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sfd.Filter = "Scene File (*.gg)|*.gg";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                
+                foreach(var x in BuildingFloors)
+                {
+                    using(MemoryStream stream= new MemoryStream()) 
+                    {
+                        x.BuildingImage.Save(stream, x.BuildingImage.RawFormat);
+                        x.ImageData = stream.ToArray();
+                    }
+                }
+                string contents = JsonConvert.SerializeObject(BuildingFloors);
+                System.IO.File.WriteAllText(sfd.FileName, contents);
+
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ofd.Filter = "Scene File (*.gg)|*.gg";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+               
+
+                string contents = System.IO.File.ReadAllText(ofd.FileName);
+                BuildingFloors = JsonConvert.DeserializeObject<List<BuildingFloor>>(contents);
+
+                foreach (var x in BuildingFloors)
+                {
+                    using (var stream = new MemoryStream(x.ImageData)) 
+                    {
+                        x.BuildingImage = Image.FromStream(stream);
+                    }
+                }
+                ListBoxBuildingFloors.Items.Clear();
+                foreach (BuildingFloor bf in BuildingFloors) ListBoxBuildingFloors.Items.Add(bf);
+
+
+            }
         }
     }
 }
